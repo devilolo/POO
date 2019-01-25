@@ -46,14 +46,14 @@ public class TestTriangle {
         }
         
          if (tIso.isIsocele()) {
-            System.out.println("Le triangle tRec est isocèle");
+            System.out.println("Le triangle tISO est isocèle");
         } else {
-            System.out.println("Le triangle tRec n'est pas isocèle");
+            System.out.println("Le triangle tISO n'est pas isocèle");
         }
         if (tIso.isEquilateral()) {
-            System.out.println("Le triangle tRec est equilateral");
+            System.out.println("Le triangle tISO est equilateral");
         } else {
-            System.out.println("Le triangle tRec n'est pas equilateral");
+            System.out.println("Le triangle tISO n'est pas equilateral");
         }
         
         if (tRec.isRectangle()) {
@@ -62,9 +62,9 @@ public class TestTriangle {
             System.out.println("Le triangle tRec n'est pas rectangle");
         }
         if (tIso.isRectangle()) {
-            System.out.println("Le triangle tRec est rectangle");
+            System.out.println("Le triangle tISO est rectangle");
         } else {
-            System.out.println("Le triangle tRec n'est pas rectangle");
+            System.out.println("Le triangle tISO n'est pas rectangle");
         }
     }
 }

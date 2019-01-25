@@ -84,17 +84,17 @@ public class Triangle {
     }
 
     public boolean isIsocele() {
-        if (c1.getLongueur() == c2.getLongueur() && c2.getLongueur() != c3.getLongueur()) {
+        if (egalDouble(c1.getLongueur(), c2.getLongueur()) && !egalDouble(c2.getLongueur(), c3.getLongueur())) {
             return true;
-        } else if (c3.getLongueur() == c2.getLongueur() && c1.getLongueur() != c3.getLongueur()) {
+        } else if (egalDouble(c3.getLongueur(), c2.getLongueur()) && !egalDouble(c3.getLongueur(), c1.getLongueur())) {
             return true;
         } else {
-            return c1.getLongueur() == c3.getLongueur() && c2.getLongueur() != c3.getLongueur();
+            return egalDouble(c3.getLongueur(), c1.getLongueur()) && !egalDouble(c2.getLongueur(), c3.getLongueur());
         }
     }
 
     public boolean isEquilateral() {
-        return c1.getLongueur() == c2.getLongueur() && c2.getLongueur() == c3.getLongueur() && c3.getLongueur() == c1.getLongueur();
+        return egalDouble(c1.getLongueur(), c2.getLongueur())  && egalDouble(c3.getLongueur(), c1.getLongueur());
     }
 
     private Segment plusGrandCote() {
@@ -114,12 +114,18 @@ public class Triangle {
 
 public boolean isRectangle() {
         if (c1 == plusGrandCote()) {
-            return Math.pow(c1.getLongueur(), 2) == (Math.pow(c2.getLongueur(), 2) + Math.pow(c3.getLongueur(), 2));
+            return egalDouble(Math.pow(c1.getLongueur(), 2), (Math.pow(c2.getLongueur(), 2) + Math.pow(c3.getLongueur(), 2)));
         } else if (c2 == plusGrandCote()) {
             System.out.println( Math.pow(c2.getLongueur(), 2) + " = " + (Math.pow(c3.getLongueur(), 2) + Math.pow(c1.getLongueur(), 2)) );
-            return Math.pow(c2.getLongueur(), 2) == (Math.pow(c3.getLongueur(), 2) + Math.pow(c1.getLongueur(), 2));
+            return egalDouble(Math.pow(c2.getLongueur(), 2), (Math.pow(c3.getLongueur(), 2) + Math.pow(c1.getLongueur(), 2)));
         } else {           
-            return Math.pow(c3.getLongueur(), 2) == (Math.pow(c2.getLongueur(), 2) + Math.pow(c1.getLongueur(), 2));
+            return egalDouble(Math.pow(c3.getLongueur(), 2), (Math.pow(c2.getLongueur(), 2) + Math.pow(c3.getLongueur(), 2)));
         }
     }
+
+    public boolean egalDouble(double a , double b){
+        double eps = 0.01;
+        return Math.abs(a-b) < eps;      
+    }
+    
 }
